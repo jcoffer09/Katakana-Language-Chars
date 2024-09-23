@@ -1,0 +1,200 @@
+# Function Name: <katakana_table>
+#
+# Author: <Jason Coffer>
+#
+# Date: 03/28/2024
+#
+# Description:
+# <prints out the katakana characters, as well the hexadecimal, octal,
+# and decimal value of each character>
+#
+# Arguments:
+# arg1 – katakana character
+# arg2 - katakana character hexadeciaml
+# arg3 - katakana character decimal
+# arg4 - katakana character octal
+#
+# Return: <katakana_table>
+###########################################################
+import datetime
+
+
+def katakana_table():
+    katakana_chars = [ # List that holds the characters, hexadecimal, decimal, and unicode
+        ("ア", 0x30A2, 12450, 30222),
+        ("イ", 0x30A4, 12452, 30224),
+        ("ウ", 0x30A6, 12454, 30226),
+        ("エ", 0x30A8, 12456, 30230),
+        ("オ", 0x30AA, 12458, 30232),
+        ("カ", 0x30AB, 12459, 30233),
+        ("キ", 0x30AD, 12461, 30235),
+        ("ク", 0x30AF, 12463, 30237),
+        ("ケ", 0x30B1, 12465, 30241),
+        ("コ", 0x30B3, 12467, 30243),
+        ("サ", 0x30B5, 12469, 30245),
+        ("シ", 0x30B7, 12471, 30247),
+        ("ス", 0x30B9, 12473, 30251),
+        ("セ", 0x30BB, 12475, 30253),
+        ("ソ", 0x30BD, 12477, 30255),
+        ("タ", 0x30BF, 12479, 30257),
+        ("チ", 0x30C1, 12481, 30261),
+        ("ツ", 0x30C4, 12483, 30264),
+        ("テ", 0x30C6, 12485, 30266),
+        ("ト", 0x30C8, 12487, 30270),
+        ("ナ", 0x30CA, 12488, 30272),
+        ("ニ", 0x30CB, 12490, 30275),
+        ("ヌ", 0x30CC, 12492, 30276),
+        ("ネ", 0x30CD, 12494, 30277),
+        ("ノ", 0x30CE, 12496, 30280),
+        ("ハ", 0x30CF, 12498, 30282),
+        ("ヒ", 0x30D2, 12501, 30286),
+        ("フ", 0x30D5, 12504, 30289),
+        ("ヘ", 0x30D8, 12507, 30292),
+        ("ホ", 0x30DB, 12510, 30299),
+        ("マ", 0x30DE, 12511, 30300),
+        ("ミ", 0x30DF, 12513, 30301),
+        ("ム", 0x30E0, 12515, 30302),
+        ("メ", 0x30E1, 12517, 30303),
+        ("モ", 0x30E2, 12519, 30306),
+        ("ヤ", 0x30E4, 12520, 30308),
+        ("ユ", 0x30E6, 12521, 30310),
+        ("ヨ", 0x30E8, 12522, 30312),
+        ("ラ", 0x30E9, 12523, 30313),
+        ("リ", 0x30EA, 12524, 30314),
+        ("ル", 0x30EB, 12525, 30315),
+        ("レ", 0x30EC, 12527, 30317),
+        ("ロ", 0x30ED, 12530, 30321),
+        ("ワ", 0x30EF, 12531, 30323),
+        ("ヰ", 0x30F0, 12532, 30324),
+        ("ヱ", 0x30F1, 12533, 30325),
+        ("ヲ", 0x30F2, 12534, 30326),
+        ("ン", 0x30F3, 12535, 30327),
+        ("ヴ", 0x30F4, 12532, 30324),
+        ("ヵ", 0x30F5, 12501, 30286),
+        ("ヶ", 0x30F6, 12503, 30287),
+        ("ヷ", 0x30F7, 12504, 30290),
+        ("ヸ", 0x30F8, 12513, 30302),
+        ("ヹ", 0x30F9, 12517, 30304),
+        ("ヺ", 0x30FA, 12519, 30306),
+        ("ー", 0x30FC, 12540, 30344)
+    ]
+
+    # Print the table header
+    print("| Character | Hexadecimal | Decimal | Octal |")
+    print("|-----------|-------------|---------|-------|")
+
+    # Print each row of the table
+    for chars, hex_val, dec_val, oct_val in katakana_chars:
+        print(f"|     {chars}    |    {hex(hex_val)}   |  {dec_val}   | {oct_val} |")
+
+
+# Call the function to print the Katakana table
+katakana_table()
+
+#########################################################
+# Function Name: <katakana_chars_file >
+#
+# Author: <Jason Coffer>
+#
+# Date: 03/28/2024
+#
+# Description:
+# <creates a file for the katakana characters which takes the name of the team members,
+# the date, character set, number of code points, and characters 20 per line separated by
+# a comma.
+#
+#
+#
+# Arguments:
+# arg1 –  katakana_title
+# arg2 – char_set
+#
+# Return: <katakana_chars_file>
+###########################################################################################
+
+def katakana_chars_file(katakana_title, char_set): # Fucntion for Katakana Character File
+    # Team members names
+    team_mems = "Jason C, Mostafa M"
+
+    # Today;s date
+    the_date = datetime.date.today().strftime("%Y-%m-%d")
+
+    # File name
+    infile = "katakana_table.txt"
+    with open(infile, "w", encoding="utf-8") as file:  # Fixes the traceback error: 'utf-8' encoding
+        file.write("Team Members: {} \n".format(team_mems)) # Adds team members to file
+        file.write("Date: {} \n".format(the_date)) # Adds the date to the file using datetime method
+        file.write("{} Character Set \n".format(katakana_title)) # Names the characters list
+        file.write("Number of code points: {} \n".format(len(char_set))) # Total number of characters
+        file.write("Katakana Characters:\n") # Title above the list
+        for i in range(len(char_set)): # Iterates through the char_set list
+            if i % 20 == 0:  # Add newline after every 20 characters except for the first line
+                file.write("\n")
+            file.write(char_set[i] + ", ")
+
+
+katakana_title = "Katakana"
+char_set = [ # list that holds the characters
+    "ア", "ァ", "ィ", "イ", "ゥ", "ウ", "ェ", "エ", "ォ", "オ", "カ", "ガ", "キ", "ギ", "ク",
+    "グ", "ケ", "ゲ", "コ", "ゴ", "サ", "ザ", "シ", "ジ", "ス", "ズ", "セ", "ゼ", "ソ", "ゾ",
+    "タ", "ダ", "チ", "ヂ", "ッ", "ツ", "ヅ", "テ", "デ", "ト", "ド", "ナ", "ニ", "ヌ", "ネ",
+    "ノ", "ハ", "バ", "パ", "ヒ", "ビ", "ピ", "フ", "ブ", "プ", "ヘ", "ベ", "ペ", "ホ", "ボ",
+    "ポ", "マ", "ミ", "ム", "メ", "モ", "ャ", "ヤ", "ュ", "ユ", "ョ", "ヨ", "ラ", "リ", "ル",
+    "レ", "ロ", "ヮ", "ワ", "ヰ", "ヱ", "ヲ", "ン", "ヴ", "ヵ", "ヶ", "ヷ", "ヸ", "ヹ", "ヺ",
+    "・", "ー"
+]
+katakana_chars_file(katakana_title, char_set) # Creates the file
+
+
+#########################################################
+# Function Name: < katakana_chars_reverse_file >
+#
+# Author: <Jason Coffer>
+#
+# Date: 03/28/2024
+#
+# Description:
+# <creates a file for the katakana characters reversed which takes the name of the team members,
+# the date, character set, number of code points, and characters 20 per line separated by
+# a comma.
+#
+#
+#
+# Arguments:
+# arg1 –  reverse_katakana_title
+# arg2 – char_reverse_set
+#
+# Return: < katakana_chars_reverse_file >
+
+def katakana_chars_reverse_file(reverse_katakana_title, char_reverse_set): # Function for Katakana characters reversed
+    # Team members names
+    team_mems = "Jason C, Mostafa M"
+
+    # Today;s date
+    the_date = datetime.date.today().strftime("%Y-%m-%d")
+
+    infile = "reverse_katakana_table.txt"
+    with open(infile, "w", encoding="utf-8") as file:  # Fixes the traceback error by adding 'utf-8' encoding
+        file.write("Team Members: {} \n".format(team_mems))  # Add '\n' for newline
+        file.write("Date: {} \n".format(the_date))  # Add '\n' for newline
+        file.write("{} Character Set \n".format(reverse_katakana_title))  # Add '\n' for newline
+        file.write("Number of code points: {} \n".format(len(char_reverse_set)))  # Add '\n' for newline
+        file.write("Katakana Characters in Reverse Order:\n")
+        #file.write(" ".join(char_reverse_set))
+        for i in range(len(char_reverse_set)):
+            if i % 20 == 0:  # Add newline after every 20 characters except for the first line
+                file.write("\n")
+            file.write(char_reverse_set[i] + ", ")
+
+
+reverse_katakana_title = "Katakana"
+char_reverse_set = [
+    "ー", "・", "ヺ", "ヹ", "ヸ", "ヷ", "ヶ", "ヵ", "ヴ", "ン", "ヲ", "ヱ", "ヰ", "ワ", "ヮ",
+    "ロ", "レ", "ル", "リ", "ラ", "ヨ", "ョ", "ユ", "ュ", "ヤ", "ャ", "モ", "メ", "ム", "ミ",
+    "マ", "ポ", "ボ", "ホ", "ペ", "ベ", "ヘ", "プ", "ブ", "フ", "ピ", "ビ", "ヒ", "パ", "バ",
+    "ハ", "ノ", "ネ", "ヌ", "ニ", "ナ", "ド", "ト", "デ", "テ", "ヅ", "ツ", "ッ", "ヂ", "チ",
+    "タ", "ゾ", "ソ", "ゼ", "セ", "ス", "ジ", "シ", "ザ", "サ", "ゴ", "コ", "ゲ", "ケ", "グ",
+    "ク", "ギ", "キ", "ガ", "カ", "オ", "ォ", "エ", "ェ", "ウ", "ゥ", "イ", "ィ", "ァ", "ア"
+]
+katakana_chars_reverse_file(reverse_katakana_title, char_reverse_set)
+
